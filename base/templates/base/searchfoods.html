@@ -1,0 +1,54 @@
+{% extends 'base/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<br>
+<div class="card text-center">
+    <h1>WHOLE PLANT FOODS</h1>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form method="get">
+                {{myFilter.form}}
+                <button class="btn btn-primary" type="submit">Search</button>
+                <a class="btn btn-primary" href="{% url 'add_food' %}">Add Food</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>kCals per lb</th>
+                    <th>kCals per serving</th>
+                    <th>Cost per serving</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+
+                {% for food in foods %}
+                <tr>
+                    <td>{{food.title}}</td>
+                    <td>{{food.category}}</td>
+                    <td>{{food.calperlb}}</td>
+                    <td>{{food.calories}}</td>
+                    <td>{{food.price}}</td>
+                    <td><a class='btn btn-sm btn-info' href="{% url 'update_food' food.id %}">Update</a></td>
+                    <td><a class='btn btn-sm btn-danger' href="{% url 'delete_food' food.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <br>
+    </div>
+</div>
+
+{% endblock %}
