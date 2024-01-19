@@ -1,1 +1,1 @@
-web: gunicorn veganapp.wsgi --log-file -
+web: gunicorn veganapp-railway.wsgi --log-file -
